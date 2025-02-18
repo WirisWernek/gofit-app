@@ -1,11 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
+
+import EquipamentoItem from "./src/components/equipamento-item";
+import api from "./src/services/api";
 
 export default function App() {
+  const [filmes, setFilmes] = useState([]);
+  useEffect(() => {
+    async function loadFilmes() {
+      const response = await api.get("equipamento");
+      setFilmes(response.data);
+    }
+    loadFilmes();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <FlatList
+        data={filmes}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => <EquipamentoItem data={item} />}
+      />
     </View>
   );
 }
@@ -13,8 +28,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+	marginTop: 40
   },
 });
