@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function EquipamentoItem({ data }) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={ () => console.log(data)} style={styles.container}>
       <Text style={styles.nome}>{data.nome}</Text>
       <Text style={styles.tipo}>{data.tipo}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

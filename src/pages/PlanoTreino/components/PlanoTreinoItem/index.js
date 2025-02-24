@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function PlanoTreinoItem({ data }) {
   return (
-    <View
+    <TouchableOpacity onPress={ () => console.log(data)}
       style={[styles.container, data.ativo ? styles.ativo : styles.inativo]}
     >
       <View style={styles.header}>
@@ -10,7 +10,7 @@ export default function PlanoTreinoItem({ data }) {
         <Text style={styles.inicio}>{dataFormatada(data.inicio)}</Text>
       </View>
       <Text style={styles.descricao}>{data.descricao}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
