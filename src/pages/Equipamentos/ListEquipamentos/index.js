@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-import api from "../../../services/api";
+import { getAll } from "../../../services/equipamento-service";
 import EquipamentoItem from "../components/EquipamentoItem";
 
 export default function ListEquipamentos() {
@@ -17,7 +17,7 @@ export default function ListEquipamentos() {
 
   useEffect(() => {
     async function loadFilmes() {
-      const response = await api.get("equipamento");
+      const response = await getAll();
       setFilmes(response.data);
     }
     loadFilmes();
@@ -27,7 +27,7 @@ export default function ListEquipamentos() {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.botao}
-        onPress={() => navigation.navigate("Formulário de Equipamento")}
+        onPress={() => navigation.navigate("form-equipamento")}
       >
         <Text style={styles.textoBotao}>Novo Equipamento</Text>
       </TouchableOpacity>

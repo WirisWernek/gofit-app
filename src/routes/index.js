@@ -16,19 +16,33 @@ export default function Routes() {
         headerShown: true,
       }}
     >
-      <Drawer.Screen name="Equipamentos" component={ListEquipamentos} />
-      <Drawer.Screen name="Planos de Treino" component={ListPlanoTreino} />
       <Drawer.Screen
-        name="Formulário de Plano de Treino"
+        name="equipamentos-list"
+        component={ListEquipamentos}
+        options={{
+          title: "Equipamentos",
+        }}
+      />
+      <Drawer.Screen
+        name="plano-treino-list"
+        component={ListPlanoTreino}
+        options={{
+          title: "Planos de Treino",
+        }}
+      />
+      <Drawer.Screen
+        name="form-plano-treino"
         component={FormPlanoTreino}
         options={{
+          title: "Formulário de Plano de Treino",
           drawerItemStyle: { display: "none" },
         }}
       />
       <Drawer.Screen
-        name="Formulário de Equipamento"
+        name="form-equipamento"
         component={FormEquipamento}
         options={{
+          title: "Formulário de Equipamento",
           drawerItemStyle: { display: "none" },
         }}
       />

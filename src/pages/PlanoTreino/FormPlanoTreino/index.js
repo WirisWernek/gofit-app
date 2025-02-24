@@ -1,5 +1,6 @@
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { useState } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useLayoutEffect, useState } from "react";
 import {
 	Button,
 	StyleSheet,
@@ -18,6 +19,15 @@ export default function FormPlanoTreino() {
   const [descanso, setDescanso] = useState(0);
 
   const [show, setShow] = useState(false);
+
+  const route = useRoute();
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: route.params?.id ? "Editar Plano de Treino" : "Novo Plano de Treino",
+    });
+  });
 
   function onChange(event, selectedDate) {
     const currentDate = selectedDate;
@@ -53,7 +63,7 @@ export default function FormPlanoTreino() {
 
       <View style={styles.datePicker}>
         <Button onPress={showDatepicker} title={inicio.toLocaleDateString()} />
-		
+
         {show && (
           <DateTimePicker
             testID="dateTimePicker"
@@ -78,12 +88,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-	margin: 10,
+    margin: 10,
   },
   areaStatus: {
     flexDirection: "row",
     alignItems: "center",
-	margin: 10,
+    margin: 10,
   },
   input: {
     borderWidth: 1,

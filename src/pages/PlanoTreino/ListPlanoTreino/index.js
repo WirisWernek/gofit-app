@@ -28,7 +28,7 @@ export default function ListPlanoTreino() {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.botao}
-        onPress={() => navigation.navigate("Formulário de Plano de Treino")}
+        onPress={() => navigation.navigate("form-plano-treino")}
       >
         <Text style={styles.textoBotao}>Novo Plano de Treino</Text>
       </TouchableOpacity>

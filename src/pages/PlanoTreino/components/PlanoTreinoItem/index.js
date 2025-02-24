@@ -1,8 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function PlanoTreinoItem({ data }) {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity onPress={ () => console.log(data)}
+    <TouchableOpacity
+      onPress={() => navigation.navigate("form-plano-treino", { id: data.id })}
       style={[styles.container, data.ativo ? styles.ativo : styles.inativo]}
     >
       <View style={styles.header}>

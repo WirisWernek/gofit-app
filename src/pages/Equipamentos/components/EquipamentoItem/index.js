@@ -1,8 +1,15 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function EquipamentoItem({ data }) {
+  const navigation = useNavigation();
+  
   return (
-    <TouchableOpacity onPress={ () => console.log(data)} style={styles.container}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("form-equipamento", { id: data.id
+	  })}	
+      style={styles.container}
+    >
       <Text style={styles.nome}>{data.nome}</Text>
       <Text style={styles.tipo}>{data.tipo}</Text>
     </TouchableOpacity>
